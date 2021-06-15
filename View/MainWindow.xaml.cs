@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HomeWork_13_WPF.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,6 +26,12 @@ namespace HomeWork_13_WPF
         public MainWindow()
         {
             InitializeComponent();
+        }
+
+        private void ListView_Loaded(object sender, RoutedEventArgs e)
+        {
+            MainViewModel.Source = (ListCollectionView)CollectionViewSource.GetDefaultView(LVClients.ItemsSource);
+            MainViewModel.Source.Filter = new Predicate<object>(MainViewModel.myFilter);
         }
     }
 }

@@ -85,14 +85,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="Model\BusinessClient.cs" />
-    <Compile Include="Model\BusinessDepartment.cs" />
     <Compile Include="Model\Client.cs" />
-    <Compile Include="Model\Department.cs" />
+    <Compile Include="Model\Const.cs" />
     <Compile Include="Model\Enums.cs" />
     <Compile Include="Model\PersonalClient.cs" />
-    <Compile Include="Model\PersonalDepartment.cs" />
     <Compile Include="Model\VIPClient.cs" />
-    <Compile Include="Model\VIPDepartment.cs" />
+    <Compile Include="ViewModel\DelegateCommand.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>

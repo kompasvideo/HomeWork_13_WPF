@@ -17,5 +17,6 @@ namespace HomeWork_13_WPF.Model
             Random rnd = new Random();
             Money = (uint)rnd.Next(0, 10000); 
         }
+        public abstract BankDepartment GetClassClient();
     }
 }

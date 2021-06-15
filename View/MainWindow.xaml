@@ -5,16 +5,17 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HomeWork_13_WPF"
         xmlns:viewmodels="clr-namespace:HomeWork_13_WPF.ViewModel"
+        xmlns:i="clr-namespace:System.Windows.Interactivity;assembly=System.Windows.Interactivity"
         mc:Ignorable="d"
         Title="Банк" Height="450" Width="800" WindowStartupLocation="CenterScreen">
     <Window.Resources>
         <viewmodels:MainViewModel x:Key="main"/>
-        <CollectionViewSource Source="{Binding Source={StaticResource main}, Path=Employees}" x:Key="Cvs"/>
+        <CollectionViewSource Source="{Binding Source={StaticResource main}, Path=clients}" x:Key="Cvs"/>
     </Window.Resources>
     <DockPanel>
         <WrapPanel DockPanel.Dock="Top">
             <Menu x:Name="menu" Height="22" VerticalAlignment="Top">
-                <MenuItem Header="Клиент">
+                <MenuItem Header="Счёт">
                     <MenuItem x:Name="AddAccount" Header="Открыть"/>
                     <MenuItem x:Name="CloseAccount" Header="Закрыть"/>
                     <MenuItem x:Name="MoveAccount" Header="Перевести на другой"/>
@@ -25,9 +26,24 @@
                 </MenuItem>
             </Menu>
         </WrapPanel>
-        <ListBox DockPanel.Dock="Left" Width="250" >
-        </ListBox>
-        <ListView ItemsSource="{Binding Source={StaticResource Cvs}}" SelectedItem="{Binding SelectedClient}">
+        <DockPanel Margin="5">
+            <TextBlock Text="Департаменты банка:" FontWeight="Bold" DockPanel.Dock="Top"/>
+            <ListBox DockPanel.Dock="Left" Width="250" DataContext="{StaticResource main}" ItemsSource="{Binding departments}" SelectedItem ="{Binding SelectedDep}">
+                <i:Interaction.Triggers>
+                    <i:EventTrigger EventName="SelectionChanged">
+                        <i:InvokeCommandAction Command="{Binding Source={StaticResource main}, Path=SelectedItemChangedCommand, UpdateSourceTrigger=PropertyChanged}"
+                                CommandParameter="{Binding RelativeSource={RelativeSource AncestorType={x:Type ListBox}}, Path=SelectedItem}" />
+                    </i:EventTrigger>
+                </i:Interaction.Triggers>
+            </ListBox>
+        </DockPanel>
+        <StackPanel Width="250" DockPanel.Dock="Right" Margin="5">
+            <Border BorderThickness="2" BorderBrush="#FF0A34F1">
+                <StackPanel/>
+            </Border>
+        </StackPanel>
+        <ListView ItemsSource="{Binding Source={StaticResource Cvs}}" SelectedItem="{Binding SelectedClient}" Margin="5" 
+                  Loaded="ListView_Loaded" x:Name="LVClients">
             <ListView.DataContext>
                 <Binding Source="{StaticResource main}"/>
             </ListView.DataContext>
@@ -41,7 +57,7 @@
                 </GroupStyle>
             </ListView.GroupStyle>
             <ListView.View>
-                <GridView AllowsColumnReorder="True">
+                <GridView>
                     <GridViewColumn Header="Клиент">
                         <GridViewColumn.CellTemplate>
                             <DataTemplate>
@@ -63,8 +79,5 @@
                 </GridView>
             </ListView.View>
         </ListView >
-        <StackPanel Width="250" DockPanel.Dock="Right">
-            <Border BorderThickness="2" BorderBrush="#FF0A34F1" Height="400"/>
-        </StackPanel>
     </DockPanel>
 </Window>
