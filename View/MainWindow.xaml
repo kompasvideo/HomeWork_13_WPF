@@ -1,0 +1,70 @@
+﻿<Window x:Class="HomeWork_13_WPF.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:HomeWork_13_WPF"
+        xmlns:viewmodels="clr-namespace:HomeWork_13_WPF.ViewModel"
+        mc:Ignorable="d"
+        Title="Банк" Height="450" Width="800" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <viewmodels:MainViewModel x:Key="main"/>
+        <CollectionViewSource Source="{Binding Source={StaticResource main}, Path=Employees}" x:Key="Cvs"/>
+    </Window.Resources>
+    <DockPanel>
+        <WrapPanel DockPanel.Dock="Top">
+            <Menu x:Name="menu" Height="22" VerticalAlignment="Top">
+                <MenuItem Header="Клиент">
+                    <MenuItem x:Name="AddAccount" Header="Открыть"/>
+                    <MenuItem x:Name="CloseAccount" Header="Закрыть"/>
+                    <MenuItem x:Name="MoveAccount" Header="Перевести на другой"/>
+                </MenuItem>
+                <MenuItem Header="Вклад">
+                    <MenuItem x:Name="AddDepositCapitalize" Header="С капитализацией"/>
+                    <MenuItem x:Name="AddDepositNoCapitalize" Header="Без капитализации"/>
+                </MenuItem>
+            </Menu>
+        </WrapPanel>
+        <ListBox DockPanel.Dock="Left" Width="250" >
+        </ListBox>
+        <ListView ItemsSource="{Binding Source={StaticResource Cvs}}" SelectedItem="{Binding SelectedClient}">
+            <ListView.DataContext>
+                <Binding Source="{StaticResource main}"/>
+            </ListView.DataContext>
+            <ListView.GroupStyle>
+                <GroupStyle>
+                    <GroupStyle.HeaderTemplate>
+                        <DataTemplate>
+                            <TextBlock Text="{Binding Name}"/>
+                        </DataTemplate>
+                    </GroupStyle.HeaderTemplate>
+                </GroupStyle>
+            </ListView.GroupStyle>
+            <ListView.View>
+                <GridView AllowsColumnReorder="True">
+                    <GridViewColumn Header="Клиент">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <TextBlock Text="{Binding Path=Name}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Сумма">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Grid>
+                                    <TextBlock Text="{Binding Path=Money}"/>
+                                </Grid>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView >
+        <StackPanel Width="250" DockPanel.Dock="Right">
+            <Border BorderThickness="2" BorderBrush="#FF0A34F1" Height="400"/>
+        </StackPanel>
+    </DockPanel>
+</Window>
