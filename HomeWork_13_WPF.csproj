@@ -76,6 +76,41 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Interface\IAddAccount.cs" />
+    <Compile Include="Interface\IAddDepositCapitalize.cs" />
+    <Compile Include="Interface\IAddDepositNoCapitalize.cs" />
+    <Compile Include="Interface\IMoveMoney.cs" />
+    <Compile Include="Interface\IRateView.cs" />
+    <Compile Include="Model\Deposit.cs" />
+    <Compile Include="Model\DepositPlusCapitalize.cs" />
+    <Compile Include="ViewModel\AddDepositCapitalizeViewModel.cs" />
+    <Compile Include="ViewModel\AddDepositNoCapitalizeViewModel.cs" />
+    <Compile Include="ViewModel\MoveMoneyViewModel.cs" />
+    <Compile Include="ViewModel\RateViewModel.cs" />
+    <Compile Include="View\AddDepositCapitalizeWindow.xaml.cs">
+      <DependentUpon>AddDepositCapitalizeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\AddDepositNoCapitalizeWindow.xaml.cs">
+      <DependentUpon>AddDepositNoCapitalizeWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MoveMoneyWindow.xaml.cs">
+      <DependentUpon>MoveMoneyWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\RateWindow.xaml.cs">
+      <DependentUpon>RateWindow.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\AddAccountWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddDepositCapitalizeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\AddDepositNoCapitalizeWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
@@ -84,18 +119,31 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Messenger.cs" />
     <Compile Include="Model\BusinessClient.cs" />
     <Compile Include="Model\Client.cs" />
     <Compile Include="Model\Const.cs" />
     <Compile Include="Model\Enums.cs" />
     <Compile Include="Model\PersonalClient.cs" />
     <Compile Include="Model\VIPClient.cs" />
+    <Compile Include="ViewModel\AddAccountViewModel.cs" />
     <Compile Include="ViewModel\DelegateCommand.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="View\AddAccountWindow.xaml.cs">
+      <DependentUpon>AddAccountWindow.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\MoveMoneyWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\RateWindow.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">

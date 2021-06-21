@@ -8,15 +8,52 @@ namespace HomeWork_13_WPF.Model
 {
     abstract class Client
     {
+        /// <summary>
+        /// Имя клиента
+        /// </summary>
         public string Name { get; set; }
+        /// <summary>
+        /// Сумма на счёте клиента
+        /// </summary>
         public uint Money { get; set; }
+        /// <summary>
+        /// Хранит в тексовом виде к какому департаменту относится клиент
+        /// </summary>
         public abstract string Status { get; set; }
+        /// <summary>
+        /// Вклад 
+        /// </summary>
+        public Deposit DepositClient { get; set; }
+        /// <summary>
+        /// Название вклада
+        /// </summary>
+        public string DepositClientStr { get; set; }
+        /// <summary>
+        /// Число дней в месяц
+        /// </summary>
+        static Random rnd = new Random();
+
+        /// <summary>
+        /// Конструктор
+        /// </summary>
+        /// <param name="name"></param>
         public Client(string name)
         {
             Name = name;
-            Random rnd = new Random();
-            Money = (uint)rnd.Next(0, 10000); 
+            Money = (uint)rnd.Next(0, 10000);
+            DepositClientStr = "Нет";
         }
+        public Client(string name, uint Money)
+        {
+            Name = name;
+            this.Money = Money;
+            DepositClientStr = "Нет";
+        }
+
+        /// <summary>
+        /// Возвращяет enum к какому департаменту относится клиент
+        /// </summary>
+        /// <returns></returns>
         public abstract BankDepartment GetClassClient();
     }
 }
