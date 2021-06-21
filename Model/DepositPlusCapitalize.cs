@@ -18,8 +18,12 @@ namespace HomeWork_13_WPF.Model
             base(dateBegin, interestRate, days)
         {
         }
-        
-        
+
+        /// <summary>
+        /// Расчёт % в рублях за месяц
+        /// </summary>
+        /// <param name="Money"></param>
+        /// <returns>Возвращяет массив типа string - рассчёт % в рублях и суммы вклада по месяцам</returns>
         public override string[] GetSumRate(uint Money)
         {
             double[] sum = new double[12];

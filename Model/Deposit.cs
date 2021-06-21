@@ -39,6 +39,11 @@ namespace HomeWork_13_WPF.Model
             Days = days;
         }
 
+        /// <summary>
+        /// Расчёт % в рублях за месяц
+        /// </summary>
+        /// <param name="Money"></param>
+        /// <returns>Возвращяет массив типа string - рассчёт % в рублях и суммы вклада по месяцам</returns>
         public virtual string[] GetSumRate(uint Money)
         {
             double[] sum = new double[12];
