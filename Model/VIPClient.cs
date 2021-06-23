@@ -9,9 +9,15 @@ namespace HomeWork_13_WPF.Model
     class VIPClient : Client
     {
         /// <summary>
-        /// Хранит в тексовом виде к какому департаменту относится клиент
+        /// Возвращяет в виде string к какому департаменту относится клиент
         /// </summary>
-        public override string Status { get; set; } = Const.VIPName;
+        public override string Status
+        {
+            get
+            {
+                return Const.businessName;
+            }
+        }
 
         /// <summary>
         /// Конструктор
@@ -20,17 +26,17 @@ namespace HomeWork_13_WPF.Model
         public VIPClient() : base($"{Const.VIPName} - {Guid.NewGuid().ToString().Substring(0, 5)}")
         {
         }
-        public VIPClient(string Name, uint Money) : base(Name, Money)
-        {
-        }
-
+        
         /// <summary>
         /// Возвращяет enum к какому департаменту относится клиент
         /// </summary>
         /// <returns></returns>
-        public override BankDepartment GetClassClient()
+        public override BankDepartment BankDepartmentProp
         {
-            return BankDepartment.VIPDepartment;
+            get
+            {
+                return BankDepartment.BusinessDepartment;
+            }
         }
     }
 }

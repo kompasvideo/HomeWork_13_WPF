@@ -22,10 +22,6 @@ namespace HomeWork_13_WPF.Model
         public uint Days { get; set; }
         protected byte[] daysOnMonth = { 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31 };
 
-        /// <summary>
-        /// Конструктор
-        /// </summary>
-        /// <param name="name"></param>
         public Deposit()
         {
             InterestRate = 12f;

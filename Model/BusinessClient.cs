@@ -11,12 +11,14 @@ namespace HomeWork_13_WPF.Model
         /// <summary>
         /// Хранит в тексовом виде к какому департаменту относится клиент
         /// </summary>
-        public override string Status { get; set; } = Const.businessName;
+        public override string Status 
+        { 
+            get
+            {
+                return Const.businessName;
+            }
+        } 
 
-        /// <summary>
-        /// Конструктор
-        /// </summary>
-        /// <param name="name"></param>
         public BusinessClient() : base($"{Const.businessName} - {Guid.NewGuid().ToString().Substring(0, 5)}")
         {
         }
@@ -28,9 +30,12 @@ namespace HomeWork_13_WPF.Model
         /// Возвращяет enum к какому департаменту относится клиент
         /// </summary>
         /// <returns></returns>
-        public override BankDepartment GetClassClient()
+        public override BankDepartment BankDepartmentProp
         {
-            return BankDepartment.BusinessDepartment;
+            get
+            {
+                return BankDepartment.BusinessDepartment;
+            }
         }        
     }
 }

@@ -17,9 +17,9 @@ namespace HomeWork_13_WPF.Model
         /// </summary>
         public uint Money { get; set; }
         /// <summary>
-        /// Хранит в тексовом виде к какому департаменту относится клиент
+        /// Возвращяет в виде string к какому департаменту относится клиент
         /// </summary>
-        public abstract string Status { get; set; }
+        public abstract string Status { get;}
         /// <summary>
         /// Вклад 
         /// </summary>
@@ -33,10 +33,6 @@ namespace HomeWork_13_WPF.Model
         /// </summary>
         static Random rnd = new Random();
 
-        /// <summary>
-        /// Конструктор
-        /// </summary>
-        /// <param name="name"></param>
         public Client(string name)
         {
             Name = name;
@@ -54,6 +50,6 @@ namespace HomeWork_13_WPF.Model
         /// Возвращяет enum к какому департаменту относится клиент
         /// </summary>
         /// <returns></returns>
-        public abstract BankDepartment GetClassClient();
+        public abstract BankDepartment BankDepartmentProp { get; }
     }
 }

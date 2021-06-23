@@ -25,11 +25,7 @@ namespace HomeWork_13_WPF.ViewModel
         /// Сумма на счёте
         /// </summary>
         public uint Money { get; set; }
-        /// <summary>
-        /// Конструктор
-        /// </summary>
-        /// <param name="Name"></param>
-        /// <param name="Money"></param>
+
         public AddAccountViewModel(string Name, uint Money)
         {
             this.Name = Name;

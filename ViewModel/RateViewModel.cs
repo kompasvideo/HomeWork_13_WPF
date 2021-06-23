@@ -16,10 +16,6 @@ namespace HomeWork_13_WPF.ViewModel
     {
         public string[] MoneyRate { get; set; }
 
-        /// <summary>
-        /// Конструктор
-        /// </summary>
-        /// <param name="client"></param>
         public RateViewModel(Client client)
         {
             MoneyRate = client.DepositClient.GetSumRate(client.Money);

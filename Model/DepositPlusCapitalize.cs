@@ -8,16 +8,13 @@ namespace HomeWork_13_WPF.Model
 {
     class DepositPlusCapitalize :Deposit
     {
-        /// <summary>
-        /// Конструктор
-        /// </summary>
-        public DepositPlusCapitalize() : base()
-        {
-        }
-        public DepositPlusCapitalize(DateTime dateBegin, float interestRate = 12f, uint days = 365) :
-            base(dateBegin, interestRate, days)
-        {
-        }
+        //public DepositPlusCapitalize() : base()
+        //{
+        //}
+        //public DepositPlusCapitalize(DateTime dateBegin, float interestRate = 12f, uint days = 365) :
+        //    base(dateBegin, interestRate, days)
+        //{
+        //}
 
         /// <summary>
         /// Расчёт % в рублях за месяц

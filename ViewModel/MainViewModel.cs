@@ -69,9 +69,6 @@ namespace HomeWork_13_WPF.ViewModel
         public uint SelectClientDays { get; set; }
 
 
-        /// <summary>
-        /// Конструктор без параметров
-        /// </summary>
         public MainViewModel()
         {
             if (! isLoad)
@@ -181,17 +178,17 @@ namespace HomeWork_13_WPF.ViewModel
                 switch (SelectedDep)
                 {
                     case Const.personalName:
-                        if (c.GetClassClient() == BankDepartment.PersonalDepartment)
+                        if (c.BankDepartmentProp == BankDepartment.PersonalDepartment)
                             return true;
                         else
                             return false;
                     case Const.businessName:
-                        if (c.GetClassClient() == BankDepartment.BusinessDepartment)
+                        if (c.BankDepartmentProp == BankDepartment.BusinessDepartment)
                             return true;
                         else
                             return false;
                     case Const.VIPName:
-                        if (c.GetClassClient() == BankDepartment.VIPDepartment)
+                        if (c.BankDepartmentProp == BankDepartment.VIPDepartment)
                             return true;
                         else
                             return false;
@@ -317,7 +314,7 @@ namespace HomeWork_13_WPF.ViewModel
                     if (SelectedClient != null)
                     {
                         IAddDepositNoCapitalize iAddDepositNoCapitalize = new AddDepositNoCapitalizeWindow();
-                        switch (SelectedClient.GetClassClient())
+                        switch (SelectedClient.BankDepartmentProp)
                         {
                             case BankDepartment.BusinessDepartment:
                                 iAddDepositNoCapitalize.Show(BankDepartment.BusinessDepartment);
@@ -369,7 +366,7 @@ namespace HomeWork_13_WPF.ViewModel
                     if (SelectedClient != null)
                     {
                         IAddDepositCapitalize iAddDepositCapitalize = new AddDepositCapitalizeWindow();
-                        switch (SelectedClient.GetClassClient())
+                        switch (SelectedClient.BankDepartmentProp)
                         {
                             case BankDepartment.BusinessDepartment:
                                 iAddDepositCapitalize.Show(BankDepartment.BusinessDepartment);
