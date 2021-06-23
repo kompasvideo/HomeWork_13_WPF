@@ -15,11 +15,14 @@ namespace HomeWork_13_WPF.Model
         {
             get
             {
-                return Const.businessName;
+                return Const.personalName;
             }
         }
 
         public PersonalClient(): base($"{Const.personalName} - {Guid.NewGuid().ToString().Substring(0, 5)}") 
+        {
+        }
+        public PersonalClient(string Name, uint Money) : base(Name, Money)
         {
         }
 
@@ -31,7 +34,7 @@ namespace HomeWork_13_WPF.Model
         {
             get
             {
-                return BankDepartment.BusinessDepartment;
+                return BankDepartment.PersonalDepartment;
             }
         }
     }
