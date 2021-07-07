@@ -94,7 +94,6 @@
     <Compile Include="DisplayRootRegistry.cs" />
     <Compile Include="Model\Deposit.cs" />
     <Compile Include="Model\DepositPlusCapitalize.cs" />
-    <Compile Include="ViewModelLocator.cs" />
     <Compile Include="ViewModel\AddDepositCapitalizeViewModel.cs" />
     <Compile Include="ViewModel\AddDepositNoCapitalizeViewModel.cs" />
     <Compile Include="ViewModel\MoveMoneyViewModel.cs" />

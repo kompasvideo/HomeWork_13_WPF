@@ -30,7 +30,6 @@ namespace HomeWork_13_WPF
 
         protected override void OnStartup(StartupEventArgs e)
         {
-            ViewModelLocator.Init();
             base.OnStartup(e);
 
             mainWindowViewModel = new MainViewModel();

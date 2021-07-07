@@ -5,7 +5,6 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HomeWork_13_WPF.View"
         xmlns:viewmodels="clr-namespace:HomeWork_13_WPF.ViewModel"
-        DataContext="{Binding AddAccountViewModel, Source={StaticResource ViewModelLocator}}"
         xmlns:sys="clr-namespace:System;assembly=mscorlib"
         mc:Ignorable="d"
         Title="Открыть счёт" Height="300" Width="300" WindowStartupLocation="CenterScreen">

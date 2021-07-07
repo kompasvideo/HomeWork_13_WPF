@@ -1,4 +1,5 @@
-﻿using System.Windows;
+﻿using HomeWork_13_WPF.ViewModel;
+using System.Windows;
 
 namespace HomeWork_13_WPF.View
 {

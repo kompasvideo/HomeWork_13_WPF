@@ -4,11 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HomeWork_13_WPF.View"
-        DataContext="{Binding AddDepositNoCapitalizeViewModel, Source={StaticResource ViewModelLocator}}"
+        xmlns:viewmodel="clr-namespace:HomeWork_13_WPF.ViewModel" 
         mc:Ignorable="d"
         Title="Открыть вклад без капитализации %" Height="380" Width="300"
         WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <viewmodel:AddDepositNoCapitalizeViewModel x:Key="deposit"/>
+    </Window.Resources>
     <StackPanel>
+        <StackPanel>
+            <StackPanel.DataContext>
+                <Binding Source="{StaticResource deposit}"/>
+            </StackPanel.DataContext>
+        </StackPanel>
         <TextBlock Text="{Binding DepositV.InterestRate, StringFormat={}Процентная ставка: {0}%}"  Margin="20 10 0 0"/>
         <TextBlock Text="Дата открытия вклада:" Margin="20 10 0 0"/>
         <Calendar/>
@@ -21,9 +29,9 @@
                 <ColumnDefinition/>
             </Grid.ColumnDefinitions>
             <Button Content="ОК" Grid.Column="0" Margin="0 5 20 0" VerticalAlignment="Top" Width="75" HorizontalAlignment="Right"
-                     IsDefault="True" Command="{Binding bOK_Click}"/>
+                     IsDefault="True" DataContext="{StaticResource deposit}" Command="{Binding bOK_Click}"/>
             <Button Content="Отмена" Grid.Column="1" Margin="20 5 0 0" VerticalAlignment="Top" Width="75" HorizontalAlignment="Left"
-                     IsCancel="True" Command="{Binding bCancel_Click}"/>
+                     IsCancel="True" DataContext="{StaticResource deposit}" Command="{Binding bCancel_Click}"/>
         </Grid>
     </StackPanel>
 </Window>

@@ -5,11 +5,12 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HomeWork_13_WPF.View"
         xmlns:viewmodels="clr-namespace:HomeWork_13_WPF.ViewModel"
-        DataContext="{Binding MoveMoneyViewModel, Source={StaticResource ViewModelLocator}}"
         mc:Ignorable="d"
         Title="Перевести между счетами" Height="450" Width="400" WindowStartupLocation="CenterScreen">
     <Window.Resources>
-        <CollectionViewSource Source="{Binding Source={StaticResource ViewModelLocator}, Path=MainViewModel.clients}" x:Key="Cvs"/>
+        <viewmodels:MainViewModel x:Key="main"/>
+        <viewmodels:MoveMoneyViewModel x:Key="move"/>
+        <CollectionViewSource Source="{Binding Source={StaticResource main}, Path=clients}" x:Key="Cvs"/>
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -19,8 +20,11 @@
             <RowDefinition Height="70"/>
         </Grid.RowDefinitions>
         <TextBlock Text="Перевести деньги на счёт:" Margin="20 5 0 10" Grid.Row="0"/>
-        <ListView ItemsSource="{Binding Source={StaticResource Cvs}}" SelectedItem="{Binding SelectedClient}" Margin="20 0 20 0" 
+        <ListView ItemsSource="{Binding Source={StaticResource Cvs}}" SelectedItem="{Binding Source={StaticResource move}, Path=SelectedClient}" Margin="20 0 20 0" 
                   Grid.Row="1">
+            <ListView.DataContext>
+                <Binding Source="{StaticResource main}"/>
+            </ListView.DataContext>
             <ListView.GroupStyle>
                 <GroupStyle>
                     <GroupStyle.HeaderTemplate>
@@ -55,9 +59,9 @@
         </ListView >
         <StackPanel Grid.Row="2">
             <TextBlock Text="Укажите сумму для перевода:" Margin="20 5 0 0"/>
-            <TextBox Text="{Binding MoneyMove}" Margin="20 5 20 0"/>
+            <TextBox Text="{Binding Source={StaticResource move}, Path=MoneyMove}" Margin="20 5 20 0"/>
         </StackPanel>
-        <Grid Height="30" Margin="0 20"  Grid.Row="3">
+        <Grid Height="30" Margin="0 20"  Grid.Row="3" DataContext="{StaticResource move}">
             <Grid.ColumnDefinitions>
                 <ColumnDefinition/>
                 <ColumnDefinition/>
