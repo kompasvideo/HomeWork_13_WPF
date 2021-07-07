@@ -11,7 +11,7 @@ using System.Windows;
 
 namespace HomeWork_13_WPF.ViewModel
 {
-    class AddAccountViewModel : ViewModelBase
+    public class AddAccountViewModel : ViewModelBase
     {
         /// <summary>
         /// Выбранный департамент в списке
@@ -25,7 +25,9 @@ namespace HomeWork_13_WPF.ViewModel
         /// Сумма на счёте
         /// </summary>
         public uint Money { get; set; }
-
+        public AddAccountViewModel()
+        {
+        }
         public AddAccountViewModel(string Name, uint Money)
         {
             this.Name = Name;

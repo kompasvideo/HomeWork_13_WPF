@@ -1,24 +1,28 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using DevExpress.Mvvm;
+﻿using DevExpress.Mvvm;
 using System.Windows.Input;
-using HomeWork_13_WPF.View;
-using System.Windows;
-using HomeWork_13_WPF.Interface;
 using HomeWork_13_WPF.Model;
+using System.Collections.Generic;
 
 namespace HomeWork_13_WPF.ViewModel
 {
-    class RateViewModel : ViewModelBase
+    public class RateViewModel : ViewModelBase
     {
-        public string[] MoneyRate { get; set; }
+        public static string[] MoneyRate { get; set; }
 
-        public RateViewModel(Client client)
+        public RateViewModel()
         {
-            MoneyRate = client.DepositClient.GetSumRate(client.Money);
+        }
+        /// <summary>
+        /// Принимает параметр типа Client
+        /// </summary>
+        /// <param name="client"></param>
+        public static void SetClient(Dictionary<Client, short> client)
+        {
+            foreach (KeyValuePair<Client, short> kvp in client)
+            {
+                Client l_client  = kvp.Key;
+                MoneyRate = l_client.DepositClient.GetSumRate(l_client.Money);
+            }
         }
 
         /// <summary>

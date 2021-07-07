@@ -9,19 +9,22 @@ using System.Windows.Input;
 
 namespace HomeWork_13_WPF.ViewModel
 {
-    class AddDepositCapitalizeViewModel : ViewModelBase
+    public class AddDepositCapitalizeViewModel : ViewModelBase
     {
         public static DepositPlusCapitalize DepositV { get; set; }
-        BankDepartment bankDepartment;
+        static BankDepartment bankDepartment;
 
         public AddDepositCapitalizeViewModel()
         {
-            DepositV = new DepositPlusCapitalize();
         }
-        public AddDepositCapitalizeViewModel(BankDepartment bankDepartment)
+        /// <summary>
+        /// Принимает аргумент BankDepartment pBankDepartment
+        /// </summary>
+        /// <param name="pBankDepartment"></param>
+        public static void SetBankDepartment(BankDepartment pBankDepartment)
         {
-            this.bankDepartment = bankDepartment;
             DepositV = new DepositPlusCapitalize();
+            bankDepartment = pBankDepartment;
             switch (bankDepartment)
             {
                 case BankDepartment.BusinessDepartment:
@@ -35,7 +38,6 @@ namespace HomeWork_13_WPF.ViewModel
                     break;
             }
         }
-
         /// <summary>
         /// Нажата кнопка "Ок"
         /// </summary>

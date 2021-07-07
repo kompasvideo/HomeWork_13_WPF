@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HomeWork_13_WPF.Model
 {
-    class DepositPlusCapitalize :Deposit
+    public class DepositPlusCapitalize :Deposit
     {
         public DepositPlusCapitalize() : base()
         {

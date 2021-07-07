@@ -9,7 +9,7 @@ using System.Windows.Input;
 
 namespace HomeWork_13_WPF.ViewModel
 {
-    class MoveMoneyViewModel
+    public class MoveMoneyViewModel
     {
         /// <summary>
         /// Выбранный клинт в списке

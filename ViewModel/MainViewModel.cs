@@ -2,18 +2,14 @@
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using DevExpress.Mvvm;
 using System.Windows.Input;
 using HomeWork_13_WPF.View;
 using System.Windows;
-using HomeWork_13_WPF.Interface;
 
 namespace HomeWork_13_WPF.ViewModel
 {
-    class MainViewModel : ViewModelBase
+    public class MainViewModel : ViewModelBase
     {
         /// <summary>
         /// Названия департаментов банка
@@ -208,8 +204,10 @@ namespace HomeWork_13_WPF.ViewModel
             {
                 var a = new DelegateCommand((obj) =>
                 {
-                    IAddAccount iAddAccount = new AddAccountWindow();
-                    iAddAccount.Show();
+                    var displayRootRegistry = (Application.Current as App).displayRootRegistry;
+
+                    var addAccountViewModel = new AddAccountViewModel();
+                    displayRootRegistry.ShowModalPresentation(addAccountViewModel);
                 });
                 return a;
             }
@@ -264,8 +262,10 @@ namespace HomeWork_13_WPF.ViewModel
                 {
                     if (SelectedClient != null)
                     {
-                        IMoveMoney iMoveMoney = new MoveMoneyWindow();
-                        iMoveMoney.Show();
+                        var displayRootRegistry = (Application.Current as App).displayRootRegistry;
+
+                        var moveMoneyViewModel = new MoveMoneyViewModel();
+                        displayRootRegistry.ShowModalPresentation(moveMoneyViewModel);
                     }
                     else
                         MessageBox.Show("Не выбран счёт для перевода", "Перевести на другой счёт");
@@ -313,17 +313,25 @@ namespace HomeWork_13_WPF.ViewModel
                 {
                     if (SelectedClient != null)
                     {
-                        IAddDepositNoCapitalize iAddDepositNoCapitalize = new AddDepositNoCapitalizeWindow();
+                        var displayRootRegistry = (Application.Current as App).displayRootRegistry;
+                        var addDepositNoCapitalizeViewModel = new AddDepositNoCapitalizeViewModel();
+                        Dictionary<BankDepartment, uint> bd = new Dictionary<BankDepartment, uint>();
                         switch (SelectedClient.BankDepartmentProp)
                         {
                             case BankDepartment.BusinessDepartment:
-                                iAddDepositNoCapitalize.Show(BankDepartment.BusinessDepartment);
+                                bd.Add(BankDepartment.BusinessDepartment, 0);
+                                Messenger.Default.Send(bd);
+                                displayRootRegistry.ShowModalPresentation(addDepositNoCapitalizeViewModel);
                                 break;
                             case BankDepartment.PersonalDepartment:
-                                iAddDepositNoCapitalize.Show(BankDepartment.PersonalDepartment);
+                                bd.Add(BankDepartment.PersonalDepartment, 0);
+                                Messenger.Default.Send(bd);
+                                displayRootRegistry.ShowModalPresentation(addDepositNoCapitalizeViewModel);
                                 break;
                             case BankDepartment.VIPDepartment:
-                                iAddDepositNoCapitalize.Show(BankDepartment.VIPDepartment);
+                                bd.Add(BankDepartment.VIPDepartment, 0);
+                                Messenger.Default.Send(bd);
+                                displayRootRegistry.ShowModalPresentation(addDepositNoCapitalizeViewModel);
                                 break;
                         }
                         if (SelectedClient.DepositClient != null)
@@ -365,17 +373,21 @@ namespace HomeWork_13_WPF.ViewModel
                 {
                     if (SelectedClient != null)
                     {
-                        IAddDepositCapitalize iAddDepositCapitalize = new AddDepositCapitalizeWindow();
+                        var displayRootRegistry = (Application.Current as App).displayRootRegistry;
+                        var addDepositCapitalizeViewModel = new AddDepositCapitalizeViewModel();
                         switch (SelectedClient.BankDepartmentProp)
                         {
                             case BankDepartment.BusinessDepartment:
-                                iAddDepositCapitalize.Show(BankDepartment.BusinessDepartment);
+                                Messenger.Default.Send(BankDepartment.BusinessDepartment);
+                                displayRootRegistry.ShowModalPresentation(addDepositCapitalizeViewModel);
                                 break;
                             case BankDepartment.PersonalDepartment:
-                                iAddDepositCapitalize.Show(BankDepartment.PersonalDepartment);
+                                Messenger.Default.Send(BankDepartment.PersonalDepartment);
+                                displayRootRegistry.ShowModalPresentation(addDepositCapitalizeViewModel);
                                 break;
                             case BankDepartment.VIPDepartment:
-                                iAddDepositCapitalize.Show(BankDepartment.VIPDepartment);
+                                Messenger.Default.Send(BankDepartment.VIPDepartment);
+                                displayRootRegistry.ShowModalPresentation(addDepositCapitalizeViewModel);
                                 break;
                         }
                         if (SelectedClient.DepositClient != null)
@@ -418,9 +430,13 @@ namespace HomeWork_13_WPF.ViewModel
                     
                     if (SelectedClient != null && SelectedClient.DepositClient != null)
                     {
-                        // если оба условия = true
-                        IRateView iRateView = new RateWindow();
-                        iRateView.Show(SelectedClient);
+                        var displayRootRegistry = (Application.Current as App).displayRootRegistry;
+
+                        var rateViewModel = new RateViewModel();
+                        Dictionary<Client, short> client = new Dictionary<Client, short>();
+                        client.Add(SelectedClient, 0);
+                        Messenger.Default.Send(client);
+                        displayRootRegistry.ShowModalPresentation(rateViewModel);
                     }
                     else
                         MessageBox.Show("Не выбран клиент", "Расчёт %");

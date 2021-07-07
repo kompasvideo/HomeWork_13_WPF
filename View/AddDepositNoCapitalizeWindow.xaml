@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HomeWork_13_WPF.View"
+        DataContext="{Binding AddDepositNoCapitalizeViewModel, Source={StaticResource ViewModelLocator}}"
         mc:Ignorable="d"
         Title="Открыть вклад без капитализации %" Height="380" Width="300"
         WindowStartupLocation="CenterScreen">

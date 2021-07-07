@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HomeWork_13_WPF.Model
 {
-    class Deposit
+    public class Deposit
     {
         /// <summary>
         /// Процентная ставка

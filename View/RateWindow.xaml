@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:HomeWork_13_WPF.View"
+        DataContext="{Binding RateViewModel, Source={StaticResource ViewModelLocator}}"
         mc:Ignorable="d"
         Title="Расчёт %" Height="300" Width="250"
         WindowStartupLocation="CenterScreen">

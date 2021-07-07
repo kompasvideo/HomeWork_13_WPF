@@ -9,32 +9,40 @@ using HomeWork_13_WPF.Model;
 
 namespace HomeWork_13_WPF.ViewModel
 {
-    class AddDepositNoCapitalizeViewModel : ViewModelBase
+    public class AddDepositNoCapitalizeViewModel : ViewModelBase
     {
         public static Deposit DepositV { get; set; }
-        BankDepartment bankDepartment;
+        static BankDepartment bankDepartment;
 
         public AddDepositNoCapitalizeViewModel()
         {
-            DepositV = new Deposit();
         }
-        public AddDepositNoCapitalizeViewModel(BankDepartment bankDepartment)
+        /// <summary>
+        /// Принимает аргумент BankDepartment pBankDepartment
+        /// </summary>
+        /// <param name="pBankDepartment"></param>
+        public static void SetBankDepartment(Dictionary<BankDepartment, uint> pBankDepartment)
         {
-            this.bankDepartment = bankDepartment;
             DepositV = new Deposit();
-            switch (bankDepartment)
+
+            foreach (KeyValuePair<BankDepartment, uint> kvp in pBankDepartment)
             {
-                case BankDepartment.BusinessDepartment:
-                    DepositV.InterestRate = 10;
-                    break;
-                case BankDepartment.PersonalDepartment:
-                    DepositV.InterestRate = 20;
-                    break;
-                case BankDepartment.VIPDepartment:
-                    DepositV.InterestRate = 30;
-                    break;
+                bankDepartment = kvp.Key;
+                switch (bankDepartment)
+                {
+                    case BankDepartment.BusinessDepartment:
+                        DepositV.InterestRate = 10;
+                        break;
+                    case BankDepartment.PersonalDepartment:
+                        DepositV.InterestRate = 20;
+                        break;
+                    case BankDepartment.VIPDepartment:
+                        DepositV.InterestRate = 30;
+                        break;
+                }
             }
         }
+        
 
         /// <summary>
         /// Нажата кнопка "Ок"

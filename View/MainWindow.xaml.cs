@@ -51,6 +51,9 @@ namespace HomeWork_13_WPF
             Messenger.Default.Register<Dictionary<Client, uint>>(MainViewModel.ReturnMoveMoney);
             Messenger.Default.Register<Deposit>(MainViewModel.ReturnAddDepositNoCapitalize);
             Messenger.Default.Register<DepositPlusCapitalize>(MainViewModel.ReturnAddDepositCapitalize);
+            Messenger.Default.Register<BankDepartment>(AddDepositCapitalizeViewModel.SetBankDepartment);
+            Messenger.Default.Register<Dictionary<BankDepartment, uint>>(AddDepositNoCapitalizeViewModel.SetBankDepartment);
+            Messenger.Default.Register<Dictionary<Client, short>>(RateViewModel.SetClient);
         }
         
         /// <summary>
@@ -64,6 +67,9 @@ namespace HomeWork_13_WPF
             Messenger.Default.Unregister<Dictionary<Client, uint>>(MainViewModel.ReturnMoveMoney);
             Messenger.Default.Unregister<Deposit>(MainViewModel.ReturnAddDepositNoCapitalize);
             Messenger.Default.Unregister<DepositPlusCapitalize>(MainViewModel.ReturnAddDepositCapitalize);
+            Messenger.Default.Unregister<BankDepartment>(AddDepositCapitalizeViewModel.SetBankDepartment);
+            Messenger.Default.Unregister<Dictionary<BankDepartment, uint>>(AddDepositNoCapitalizeViewModel.SetBankDepartment);
+            Messenger.Default.Unregister<Dictionary<Client, short>>(RateViewModel.SetClient);
         }
     }
 }

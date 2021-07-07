@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace HomeWork_13_WPF.Model
 {
-    abstract class Client
+    public abstract class Client
     {
         /// <summary>
         /// Имя клиента
