@@ -13,10 +13,10 @@ namespace HomeWork_13_WPF
         {
             var vmType = typeof(VM);
             if (vmType.IsInterface)
-                throw new ArgumentException("Cannot register interfaces");
+                throw new ArgumentException("Не зарегистрирован интерфейс");
             if (vmToWindowMapping.ContainsKey(vmType))
                 throw new InvalidOperationException(
-                    $"Type {vmType.FullName} is already registered");
+                    $"Тип {vmType.FullName} зарегистрирован");
             vmToWindowMapping[vmType] = typeof(Win);
         }
 
@@ -24,10 +24,10 @@ namespace HomeWork_13_WPF
         {
             var vmType = typeof(VM);
             if (vmType.IsInterface)
-                throw new ArgumentException("Cannot register interfaces");
+                throw new ArgumentException("Не зарегистрирован интерфейс");
             if (!vmToWindowMapping.ContainsKey(vmType))
                 throw new InvalidOperationException(
-                    $"Type {vmType.FullName} is not registered");
+                    $"Тип {vmType.FullName} зарегистрирован");
             vmToWindowMapping.Remove(vmType);
         }
 
@@ -43,7 +43,7 @@ namespace HomeWork_13_WPF
 
             if (windowType == null)
                 throw new ArgumentException(
-                    $"No registered window type for argument type {vm.GetType().FullName}");
+                    $"Нет зарегистрированного типа окна для типа аргумента {vm.GetType().FullName}");
 
             var window = (Window)Activator.CreateInstance(windowType);
             window.DataContext = vm;
@@ -57,7 +57,7 @@ namespace HomeWork_13_WPF
             if (vm == null)
                 throw new ArgumentNullException("vm");
             if (openWindows.ContainsKey(vm))
-                throw new InvalidOperationException("UI for this VM is already displayed");
+                throw new InvalidOperationException("UI для этого VM уже отображается");
             var window = CreateWindowInstanceWithVM(vm);
             window.Show();
             openWindows[vm] = window;
@@ -67,7 +67,7 @@ namespace HomeWork_13_WPF
         {
             Window window;
             if (!openWindows.TryGetValue(vm, out window))
-                throw new InvalidOperationException("UI for this VM is not displayed");
+                throw new InvalidOperationException("UI для этого VM уже отображается");
             window.Close();
             openWindows.Remove(vm);
         }
